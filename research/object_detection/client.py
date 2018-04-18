@@ -53,9 +53,9 @@ def test_file(filename, stub):
 
     #img.thumbnail((width, height), Image.ANTIALIAS)
 
-    img = img.convert('L') # convert to grayscale
+    #img = img.convert('L') # convert to grayscale
     img = np.array(img) # convert from PIL image to OpenCV image
-    #img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
     _, jpg = cv2.imencode('.jpg', img)
 

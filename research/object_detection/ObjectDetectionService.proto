@@ -13,6 +13,7 @@ service ObjectDetectionService {
 
 message queryImage {
     bytes image = 1;
+    uint32 angle = 2;
 }
 
 message respondMessage {

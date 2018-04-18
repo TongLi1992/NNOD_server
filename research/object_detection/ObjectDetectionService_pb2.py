@@ -19,8 +19,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='ObjectDetectionService.proto',
   package='objectDetection_grpc',
   syntax='proto3',
-  serialized_pb=_b('\n\x1cObjectDetectionService.proto\x12\x14objectDetection_grpc\"\x1b\n\nqueryImage\x12\r\n\x05image\x18\x01 \x01(\x0c\"J\n\x0erespondMessage\x12\x0c\n\x04name\x18\x01 \x03(\t\x12\t\n\x01x\x18\x02 \x03(\x01\x12\t\n\x01y\x18\x03 \x03(\x01\x12\t\n\x01z\x18\x04 \x03(\x01\x12\t\n\x01w\x18\x05 \x03(\x01\x32v\n\x16ObjectDetectionService\x12\\\n\x0cobjectDetect\x12 .objectDetection_grpc.queryImage\x1a$.objectDetection_grpc.respondMessage\"\x00(\x01\x30\x01\x42\x34\n\x1c\x65\x64u.berkeley.cs.sdb.cellmateB\x14ObjectDetectionProtob\x06proto3')
+  serialized_pb=_b('\n\x1cObjectDetectionService.proto\x12\x14objectDetection_grpc\"*\n\nqueryImage\x12\r\n\x05image\x18\x01 \x01(\x0c\x12\r\n\x05\x61ngle\x18\x02 \x01(\r\"J\n\x0erespondMessage\x12\x0c\n\x04name\x18\x01 \x03(\t\x12\t\n\x01x\x18\x02 \x03(\x01\x12\t\n\x01y\x18\x03 \x03(\x01\x12\t\n\x01z\x18\x04 \x03(\x01\x12\t\n\x01w\x18\x05 \x03(\x01\x32v\n\x16ObjectDetectionService\x12\\\n\x0cobjectDetect\x12 .objectDetection_grpc.queryImage\x1a$.objectDetection_grpc.respondMessage\"\x00(\x01\x30\x01\x42\x34\n\x1c\x65\x64u.berkeley.cs.sdb.cellmateB\x14ObjectDetectionProtob\x06proto3')
 )
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
 
@@ -38,7 +39,14 @@ _QUERYIMAGE = _descriptor.Descriptor(
       has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='angle', full_name='objectDetection_grpc.queryImage.angle', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -52,7 +60,7 @@ _QUERYIMAGE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=54,
-  serialized_end=81,
+  serialized_end=96,
 )
 
 
@@ -69,35 +77,35 @@ _RESPONDMESSAGE = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='x', full_name='objectDetection_grpc.respondMessage.x', index=1,
       number=2, type=1, cpp_type=5, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='y', full_name='objectDetection_grpc.respondMessage.y', index=2,
       number=3, type=1, cpp_type=5, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='z', full_name='objectDetection_grpc.respondMessage.z', index=3,
       number=4, type=1, cpp_type=5, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='w', full_name='objectDetection_grpc.respondMessage.w', index=4,
       number=5, type=1, cpp_type=5, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
   ],
   extensions=[
   ],
@@ -110,13 +118,12 @@ _RESPONDMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=83,
-  serialized_end=157,
+  serialized_start=98,
+  serialized_end=172,
 )
 
 DESCRIPTOR.message_types_by_name['queryImage'] = _QUERYIMAGE
 DESCRIPTOR.message_types_by_name['respondMessage'] = _RESPONDMESSAGE
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 queryImage = _reflection.GeneratedProtocolMessageType('queryImage', (_message.Message,), dict(
   DESCRIPTOR = _QUERYIMAGE,
@@ -135,28 +142,108 @@ _sym_db.RegisterMessage(respondMessage)
 
 DESCRIPTOR.has_options = True
 DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n\034edu.berkeley.cs.sdb.cellmateB\024ObjectDetectionProto'))
+try:
+  # THESE ELEMENTS WILL BE DEPRECATED.
+  # Please use the generated *_pb2_grpc.py files instead.
+  import grpc
+  from grpc.framework.common import cardinality
+  from grpc.framework.interfaces.face import utilities as face_utilities
+  from grpc.beta import implementations as beta_implementations
+  from grpc.beta import interfaces as beta_interfaces
 
-_OBJECTDETECTIONSERVICE = _descriptor.ServiceDescriptor(
-  name='ObjectDetectionService',
-  full_name='objectDetection_grpc.ObjectDetectionService',
-  file=DESCRIPTOR,
-  index=0,
-  options=None,
-  serialized_start=159,
-  serialized_end=277,
-  methods=[
-  _descriptor.MethodDescriptor(
-    name='objectDetect',
-    full_name='objectDetection_grpc.ObjectDetectionService.objectDetect',
-    index=0,
-    containing_service=None,
-    input_type=_QUERYIMAGE,
-    output_type=_RESPONDMESSAGE,
-    options=None,
-  ),
-])
-_sym_db.RegisterServiceDescriptor(_OBJECTDETECTIONSERVICE)
 
-DESCRIPTOR.services_by_name['ObjectDetectionService'] = _OBJECTDETECTIONSERVICE
+  class ObjectDetectionServiceStub(object):
 
+    def __init__(self, channel):
+      """Constructor.
+
+      Args:
+        channel: A grpc.Channel.
+      """
+      self.objectDetect = channel.stream_stream(
+          '/objectDetection_grpc.ObjectDetectionService/objectDetect',
+          request_serializer=queryImage.SerializeToString,
+          response_deserializer=respondMessage.FromString,
+          )
+
+
+  class ObjectDetectionServiceServicer(object):
+
+    def objectDetect(self, request_iterator, context):
+      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+      context.set_details('Method not implemented!')
+      raise NotImplementedError('Method not implemented!')
+
+
+  def add_ObjectDetectionServiceServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+        'objectDetect': grpc.stream_stream_rpc_method_handler(
+            servicer.objectDetect,
+            request_deserializer=queryImage.FromString,
+            response_serializer=respondMessage.SerializeToString,
+        ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+        'objectDetection_grpc.ObjectDetectionService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+
+
+  class BetaObjectDetectionServiceServicer(object):
+    """The Beta API is deprecated for 0.15.0 and later.
+
+    It is recommended to use the GA API (classes and functions in this
+    file not marked beta) for all further purposes. This class was generated
+    only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
+    def objectDetect(self, request_iterator, context):
+      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+
+
+  class BetaObjectDetectionServiceStub(object):
+    """The Beta API is deprecated for 0.15.0 and later.
+
+    It is recommended to use the GA API (classes and functions in this
+    file not marked beta) for all further purposes. This class was generated
+    only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
+    def objectDetect(self, request_iterator, timeout, metadata=None, with_call=False, protocol_options=None):
+      raise NotImplementedError()
+
+
+  def beta_create_ObjectDetectionService_server(servicer, pool=None, pool_size=None, default_timeout=None, maximum_timeout=None):
+    """The Beta API is deprecated for 0.15.0 and later.
+
+    It is recommended to use the GA API (classes and functions in this
+    file not marked beta) for all further purposes. This function was
+    generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
+    request_deserializers = {
+      ('objectDetection_grpc.ObjectDetectionService', 'objectDetect'): queryImage.FromString,
+    }
+    response_serializers = {
+      ('objectDetection_grpc.ObjectDetectionService', 'objectDetect'): respondMessage.SerializeToString,
+    }
+    method_implementations = {
+      ('objectDetection_grpc.ObjectDetectionService', 'objectDetect'): face_utilities.stream_stream_inline(servicer.objectDetect),
+    }
+    server_options = beta_implementations.server_options(request_deserializers=request_deserializers, response_serializers=response_serializers, thread_pool=pool, thread_pool_size=pool_size, default_timeout=default_timeout, maximum_timeout=maximum_timeout)
+    return beta_implementations.server(method_implementations, options=server_options)
+
+
+  def beta_create_ObjectDetectionService_stub(channel, host=None, metadata_transformer=None, pool=None, pool_size=None):
+    """The Beta API is deprecated for 0.15.0 and later.
+
+    It is recommended to use the GA API (classes and functions in this
+    file not marked beta) for all further purposes. This function was
+    generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
+    request_serializers = {
+      ('objectDetection_grpc.ObjectDetectionService', 'objectDetect'): queryImage.SerializeToString,
+    }
+    response_deserializers = {
+      ('objectDetection_grpc.ObjectDetectionService', 'objectDetect'): respondMessage.FromString,
+    }
+    cardinalities = {
+      'objectDetect': cardinality.Cardinality.STREAM_STREAM,
+    }
+    stub_options = beta_implementations.stub_options(host=host, metadata_transformer=metadata_transformer, request_serializers=request_serializers, response_deserializers=response_deserializers, thread_pool=pool, thread_pool_size=pool_size)
+    return beta_implementations.dynamic_stub(channel, 'objectDetection_grpc.ObjectDetectionService', cardinalities, options=stub_options)
+except ImportError:
+  pass
 # @@protoc_insertion_point(module_scope)

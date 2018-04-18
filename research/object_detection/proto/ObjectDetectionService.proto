@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package objectDetection_grpc;
+
+
+option java_package = "edu.berkeley.cs.sdb.cellmate";
+option java_outer_classname = "ObjectDetectionProto";
+
+
+service ObjectDetectionService {
+    rpc objectDetect(stream queryImage) returns (stream respondMessage) {}
+}
+
+message queryImage {
+    bytes image = 1;
+    uint32 angle = 2;
+}
+
+message respondMessage {
+    repeated string name = 1;
+    repeated double x = 2;
+    repeated double y = 3;
+    repeated double z = 4;
+    repeated double w = 5;
+}
+
+
