@@ -14,6 +14,9 @@ service ObjectDetectionService {
 message queryImage {
     bytes image = 1;
     uint32 angle = 2;
+    uint64 request_id = 3;
+    uint32 width = 4;
+    uint32 height = 5;
 }
 
 message respondMessage {
@@ -22,6 +25,9 @@ message respondMessage {
     repeated double y = 3;
     repeated double z = 4;
     repeated double w = 5;
+    uint64 request_id = 6;
+    uint32 width = 7;
+    uint32 height = 8;
 }
 
 

@@ -26,10 +26,10 @@ import ObjectDetectionService_pb2
 import ObjectDetectionService_pb2_grpc
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
-MODEL_NAME = 'faster_rcnn_inception_v2_coco_2018_01_28'
+MODEL_NAME = 'fanLight_inference'
 PATH_TO_CKPT = MODEL_NAME + '/frozen_inference_graph.pb'
-PATH_TO_LABELS = os.path.join('data', 'mscoco_label_map.pbtxt')
-NUM_CLASSES = 90
+PATH_TO_LABELS = os.path.join('data', 'fanLight.pbtxt')
+NUM_CLASSES = 2
 #MODEL_NAME = 'home_inference_graph_faster_inception_v2'
 #PATH_TO_CKPT = MODEL_NAME + '/frozen_inference_graph.pb'
 #PATH_TO_LABELS = os.path.join('data', 'object-detection.pbtxt')
@@ -123,22 +123,41 @@ def objectDetectTensor(image_np):
     count = 0
     print(output_dict['detection_scores'][6])
     for scr in output_dict['detection_scores']:
-        if scr > 0.7:
+        if scr > 0.8:
             count += 1
         else:
             break
     #print(output_dict['detection_boxes'][:count])
     #print(output_dict['detection_classes'][:count])
     #print(output_dict['detection_scores'][:count])
+
     
     names = index_to_categories(output_dict['detection_classes'][:count])
     p0y = [tup[0] for tup in output_dict['detection_boxes'][:count]]
     p0x = [tup[1] for tup in output_dict['detection_boxes'][:count]]
     p1y = [tup[2] for tup in output_dict['detection_boxes'][:count]]
     p1x = [tup[3] for tup in output_dict['detection_boxes'][:count]]
+    
+    uniqueNames = {}
+    newNames = []
+    newP0y = []
+    newP0x = []
+    newP1y = []
+    newP1x = []
+    for i in range(len(names)):
+        if names[i] not in uniqueNames:
+            uniqueNames[names[i]] = i
+    for name in uniqueNames:
+        oldIndex = uniqueNames[name]
+        newNames.append(names[oldIndex])
+        newP0y.append(p0y[oldIndex])
+        newP0x.append(p0x[oldIndex])
+        newP1y.append(p1y[oldIndex])
+        newP1x.append(p1x[oldIndex])
     print(names)
+    print(newNames)
     print((time.time() - old)*1000)
-    return names, p0y, p0x, p1y, p1x
+    return newNames, newP0y, newP0x, newP1y, newP1x
 
 def getImage(queryImage):
     nparr = np.fromstring(queryImage.image, np.uint8)
@@ -180,7 +199,6 @@ def rotateBack(names, xs, ys, zs, ws, angle, height, width):
             newCenterXs.append(height - oldCenterYs[i])
             newCenterYs.append(oldCenterXs[i])
     return names, newCenterXs, newCenterYs
-    
 class ObjectDetectionServiceServicer(ObjectDetectionService_pb2_grpc.ObjectDetectionServiceServicer):
     def objectDetect(self, request_iterator, context):
         for queryImage in request_iterator:
@@ -191,7 +209,7 @@ class ObjectDetectionServiceServicer(ObjectDetectionService_pb2_grpc.ObjectDetec
             names, xs, ys = rotateBack(names, p0x, p0y, p1x, p1y, angle, height, width)
             for i in range(len(names)):
                 print("found " + names[i] + " at x = " + str(xs[i]) + "  y = " + str(ys[i]))
-            yield  ObjectDetectionService_pb2.respondMessage(name=names, x=xs, y=ys,width=min(width, height), height=max(width,height), request_id=queryImage.request_id)
+            yield  ObjectDetectionService_pb2.respondMessage(name=names, x=xs, y=ys,width=min(width, height), height=max(width,height))
 
 
 def serve():

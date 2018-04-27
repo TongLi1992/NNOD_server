@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='ObjectDetectionService.proto',
   package='objectDetection_grpc',
   syntax='proto3',
-  serialized_pb=_b('\n\x1cObjectDetectionService.proto\x12\x14objectDetection_grpc\"*\n\nqueryImage\x12\r\n\x05image\x18\x01 \x01(\x0c\x12\r\n\x05\x61ngle\x18\x02 \x01(\r\"J\n\x0erespondMessage\x12\x0c\n\x04name\x18\x01 \x03(\t\x12\t\n\x01x\x18\x02 \x03(\x01\x12\t\n\x01y\x18\x03 \x03(\x01\x12\t\n\x01z\x18\x04 \x03(\x01\x12\t\n\x01w\x18\x05 \x03(\x01\x32v\n\x16ObjectDetectionService\x12\\\n\x0cobjectDetect\x12 .objectDetection_grpc.queryImage\x1a$.objectDetection_grpc.respondMessage\"\x00(\x01\x30\x01\x42\x34\n\x1c\x65\x64u.berkeley.cs.sdb.cellmateB\x14ObjectDetectionProtob\x06proto3')
+  serialized_pb=_b('\n\x1cObjectDetectionService.proto\x12\x14objectDetection_grpc\"]\n\nqueryImage\x12\r\n\x05image\x18\x01 \x01(\x0c\x12\r\n\x05\x61ngle\x18\x02 \x01(\r\x12\x12\n\nrequest_id\x18\x03 \x01(\x04\x12\r\n\x05width\x18\x04 \x01(\r\x12\x0e\n\x06height\x18\x05 \x01(\r\"}\n\x0erespondMessage\x12\x0c\n\x04name\x18\x01 \x03(\t\x12\t\n\x01x\x18\x02 \x03(\x01\x12\t\n\x01y\x18\x03 \x03(\x01\x12\t\n\x01z\x18\x04 \x03(\x01\x12\t\n\x01w\x18\x05 \x03(\x01\x12\x12\n\nrequest_id\x18\x06 \x01(\x04\x12\r\n\x05width\x18\x07 \x01(\r\x12\x0e\n\x06height\x18\x08 \x01(\r2v\n\x16ObjectDetectionService\x12\\\n\x0cobjectDetect\x12 .objectDetection_grpc.queryImage\x1a$.objectDetection_grpc.respondMessage\"\x00(\x01\x30\x01\x42\x34\n\x1c\x65\x64u.berkeley.cs.sdb.cellmateB\x14ObjectDetectionProtob\x06proto3')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -47,6 +47,27 @@ _QUERYIMAGE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='request_id', full_name='objectDetection_grpc.queryImage.request_id', index=2,
+      number=3, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='width', full_name='objectDetection_grpc.queryImage.width', index=3,
+      number=4, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='height', full_name='objectDetection_grpc.queryImage.height', index=4,
+      number=5, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -60,7 +81,7 @@ _QUERYIMAGE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=54,
-  serialized_end=96,
+  serialized_end=147,
 )
 
 
@@ -106,6 +127,27 @@ _RESPONDMESSAGE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='request_id', full_name='objectDetection_grpc.respondMessage.request_id', index=5,
+      number=6, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='width', full_name='objectDetection_grpc.respondMessage.width', index=6,
+      number=7, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='height', full_name='objectDetection_grpc.respondMessage.height', index=7,
+      number=8, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -118,8 +160,8 @@ _RESPONDMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=98,
-  serialized_end=172,
+  serialized_start=149,
+  serialized_end=274,
 )
 
 DESCRIPTOR.message_types_by_name['queryImage'] = _QUERYIMAGE
